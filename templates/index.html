@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CloudBench</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>CloudBench - Multi-Cloud Cost Estimator</h1>
+
+        <form method="POST">
+
+            <label>CPU Cores:</label>
+            <input type="number" name="cpu" required>
+            <br><br>
+
+            <label>RAM (GB):</label>
+            <input type="number" name="ram" required>
+            <br><br>
+
+            <label>Storage (GB):</label>
+            <input type="number" name="storage" required>
+            <br><br>
+            <label>Usage Hours per Month:</label>
+            <input type="number" name="hours" required>
+            <br><br>
+
+            <label>Select Region:</label>
+            <select name="region" required>
+                <option value="US-East">US-East</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit">Estimate Cost</button>
+
+        </form>
+
+        {% if result %}
+            <h2>Estimated Monthly Cost</h2>
+
+            <table>
+                <tr>
+                    <th>Cloud Provider</th>
+                    <th>Monthly Cost (USD)</th>
+                </tr>
+
+                <tr>
+                    <td>AWS</td>
+                    <td>${{ result.AWS }}</td>
+                </tr>
+
+                <tr>
+                    <td>Azure</td>
+                    <td>${{ result.Azure }}</td>
+                </tr>
+
+                <tr>
+                    <td>GCP</td>
+                    <td>${{ result.GCP }}</td>
+                </tr>
+            </table>
+
+            <h3>Recommended Provider: {{ cheapest }}</h3>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
+
