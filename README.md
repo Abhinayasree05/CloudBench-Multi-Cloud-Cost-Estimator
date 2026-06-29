@@ -15,6 +15,20 @@ CloudBench is a web-based application that estimates and compares cloud infrastr
 - CSS
 - JavaScript
 
+  CloudBench-Multi-Cloud-Cost-Estimator/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    ├── style.css
+    └── script.js
+
 ## Future Enhancements
 - Integration with real cloud pricing APIs
 - Support for multiple regions
